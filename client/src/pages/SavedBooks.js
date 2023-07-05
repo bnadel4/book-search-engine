@@ -1,62 +1,39 @@
-import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
-
-import {
-  Container,
-  Card,
-  Button,
-  Row,
-  Col
+import { 
+  Container, 
+  Card, 
+  Button, 
+  Row, 
+  Col,
 } from 'react-bootstrap';
-
-// import Auth from '../utils/auth';
+import { useQuery, useMutation } from '@apollo/client';
 import { removeBookId } from '../utils/localStorage';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
-  // let [userData, setUserData] = useState({});
-  const { loading, data } = useQuery(GET_ME);
+  const { data, loading } = useQuery(GET_ME);
+  const userData = data?.me || {};
   const [removeBook] = useMutation(REMOVE_BOOK);
 
-  const userData = data?.me || {};
-  // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
-
-
-    if (loading) {
-      return <h2>LOADING...</h2>;
-    }
-
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
-  const handleDeleteBook = async (bookId) => {
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    // if (!token) {
-    //   return false;
-    // }
-
+  async function handleDeleteBook(bookId) {
     try {
-
-      const response = await removeBook({
+      await removeBook({
         variables: {bookId: bookId}
       });
-      console.log('bookId', bookId);
-      console.log('response', response);
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // if data isn't here yet, say so
-  if (!userDataLength) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
 
   return (
     <>
-      <div fluid className="text-light bg-dark p-5">
+      <div fluid="true" className="text-light bg-dark p-5">
         <Container>
           <h1>Viewing saved books!</h1>
         </Container>
