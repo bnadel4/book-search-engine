@@ -8,7 +8,6 @@ export const LOGIN_USER = gql `
       token
       user {
         _id
-        email
         username
       }
     }
@@ -31,6 +30,7 @@ mutation saveBook($bookInfo: BookInput) {
   saveBook(bookInfo: $bookInfo) {
     _id
     username
+    email
     bookCount
     savedBooks {
       bookId
