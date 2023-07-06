@@ -31,13 +31,12 @@ It is deployed to Heroku with a MongoDB database using MongoDB Atlas.
 ## Usage
 
 To access the app visit the following url:             
-[book-search-engine](https://only-cheese.herokuapp.com/ )   
- https://only-cheese.herokuapp.com/    
+[https://book-search-engine-nadel-4672eb49cc03.herokuapp.com/](https://book-search-engine-nadel-4672eb49cc03.herokuapp.com/)   
+  
 
 ## Screenshots
 
-![Screenshot](./wireframe/Landing%20Page.jpg)
-![Screenshot](./wireframe/Signup.jpg)
-![Screenshot](./wireframe/Login.jpg)
-![Screenshot](./wireframe/Search.jpg)
-![Screenshot](./wireframe/Saved%20Books.jpg)
+![Screenshot-searchbooks](./assets/searchbooks.png)
+![Screenshot-signup](./assets/signup.png)
+![Screenshot-login](./assets/login.png)
+![Screenshot-savedbooks](./assets/savedbooks.png)
